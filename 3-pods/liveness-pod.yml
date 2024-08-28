@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod
+spec:
+  containers:
+  - name: liveness-pod
+    image: stefanprodan/podinfo
+    livenessProbe:
+      httpGet:
+        path: /readyz
+        port: 9898
+      initialDelaySeconds: 3
+      periodSeconds: 3
+      successThreshold: 1
+      failureThreshold: 3
+      timeoutSeconds: 1
